@@ -1,0 +1,11 @@
+{
+  "name": "home-control",
+  "version": "1.0.0",
+  "description": "some scripts for remote controlling things via URL",
+  "main": "src/index.js",
+  "author": "Adam Pash",
+  "license": "MIT",
+  "dependencies": {
+    "spotify-control": "adampash/spotify-control"
+  }
+}
