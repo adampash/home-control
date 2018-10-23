@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "some scripts for remote controlling things via URL",
   "scripts": {
-    "start": "nodemon --exec node -r esm src/index.js",
-    "serve": "node -r esm src/index.js"
+    "start": "env-cmd .envrc nodemon --exec node -r esm src/index.js",
+    "serve": "env-cmd .envrc node -r esm src/index.js"
   },
   "main": "src/index.js",
   "author": "Adam Pash",
@@ -14,6 +14,7 @@
     "spotify-control": "adampash/spotify-control#v1.0.7"
   },
   "devDependencies": {
+    "env-cmd": "^8.0.2",
     "esm": "^3.0.84",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3"
