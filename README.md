@@ -15,10 +15,10 @@ yarn install
 You'll need to set up the following environment variables:
 
 ```
-export CLIENT_ID=<spotify-client-id>
-export CLIENT_SECRET=<spotify-client-secret>
-export STEREO=<name-of-your-stereo>
-export PORT=<preferred-port-default-3001>
+CLIENT_ID=<spotify-client-id>
+CLIENT_SECRET=<spotify-client-secret>
+STEREO=<name-of-your-stereo>
+PORT=<preferred-port-default-3001>
 ```
 
 Then run with `yarn serve`.
