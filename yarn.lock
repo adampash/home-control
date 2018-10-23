@@ -1603,9 +1603,9 @@ split@^1.0.1:
   dependencies:
     through "2"
 
-spotify-control@adampash/spotify-control#v1.0.8:
-  version "1.0.8"
-  resolved "https://codeload.github.com/adampash/spotify-control/tar.gz/ac732ccf202798ea6b351c162fc0978392439832"
+spotify-control@adampash/spotify-control#v1.0.10:
+  version "1.0.10"
+  resolved "https://codeload.github.com/adampash/spotify-control/tar.gz/31fa747b04ae2fef71531ab43c2fc4a01e5fadbf"
   dependencies:
     express "^4.16.3"
     moment "^2.22.2"
