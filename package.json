@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
-    "spotify-control": "adampash/spotify-control#v1.0.7"
+    "spotify-control": "adampash/spotify-control#v1.0.8"
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
