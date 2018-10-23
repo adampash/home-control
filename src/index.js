@@ -11,10 +11,6 @@ const startPlaylistOnStereo = async (playlistName) => {
 }
 
 const start = () => {
-  app.get("/", function(req, res) {
-    res.send("Hello World");
-  });
-
   app.get("/start-discover", async (req, res) => {
     await startPlaylistOnStereo("Discover Weekly")
     res.sendStatus(200);
