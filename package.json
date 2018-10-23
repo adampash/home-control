@@ -2,10 +2,20 @@
   "name": "home-control",
   "version": "1.0.0",
   "description": "some scripts for remote controlling things via URL",
+  "scripts": {
+    "start": "nodemon --exec node -r esm src/index.js",
+    "serve": "node -r esm src/index.js"
+  },
   "main": "src/index.js",
   "author": "Adam Pash",
   "license": "MIT",
   "dependencies": {
-    "spotify-control": "adampash/spotify-control"
+    "express": "^4.16.4",
+    "spotify-control": "adampash/spotify-control#v1.0.7"
+  },
+  "devDependencies": {
+    "esm": "^3.0.84",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3"
   }
 }
