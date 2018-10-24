@@ -9,8 +9,8 @@ const startPlaylistOnStereo = async (playlistName, shuffle = true) => {
   if (!isActive) {
     await Spotify["pause"]();
     await new Promise(res => setTimeout(res, 1000));
+    await Spotify["set-volume"](40);
   }
-  await Spotify["set-volume"](40);
   await Spotify["set-shuffle"](shuffle);
   await Spotify["play"]({ context_uri: `spotify:playlist:${playlistId}` });
 };
