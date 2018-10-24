@@ -5,6 +5,7 @@ const app = express();
 
 const startPlaylistOnStereo = async (playlistName) => {
   await Spotify["start-device"](process.env.STEREO);
+  await new Promise(res => setTimeout(res, 1500));
   const playlistId = await Spotify["get-playlist"](playlistName);
   await Spotify["set-volume"](40);
   await Spotify["play"]({ context_uri: `spotify:playlist:${playlistId}` });
