@@ -46,6 +46,15 @@ const start = () => {
     }
   });
 
+  app.get("/play", async (req, res) => {
+    await Spotify.play()
+    res.sendStatus(200);
+  });
+  app.get("/pause", async (req, res) => {
+    await Spotify.pause()
+    res.sendStatus(200);
+  });
+
   const port = process.env.PORT || 3001;
   app.listen(process.env.PORT || 3001);
   console.log("App started on", port);
