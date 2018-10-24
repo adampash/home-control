@@ -22,6 +22,15 @@ const start = () => {
     res.sendStatus(200);
   });
 
+  app.get("/save-track", async (req, res) => {
+    try {
+    await Spotify["add-to-monthly-playlist"]();
+    res.send("Saved song to your monthly playlist");
+    } catch {
+      res.send("Something went wrong saving that song");
+    }
+  });
+
   const port = process.env.PORT || 3001;
   app.listen(process.env.PORT || 3001);
   console.log("App started on", port);
