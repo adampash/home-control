@@ -3,15 +3,24 @@ import * as Spotify from "spotify-control";
 
 const app = express();
 
-const startPlaylistOnStereo = async playlistName => {
-  await Spotify["start-device"](process.env.STEREO);
-  await new Promise(res => setTimeout(res, 1500));
+const startPlaylistOnStereo = async (playlistName, shuffle = true) => {
+  const isActive = await Spotify["start-device"](process.env.STEREO);
   const playlistId = await Spotify["get-playlist"](playlistName);
+  if (!isActive) {
+    await Spotify["pause"]();
+    await new Promise(res => setTimeout(res, 1000));
+  }
   await Spotify["set-volume"](40);
+  await Spotify["set-shuffle"](shuffle);
   await Spotify["play"]({ context_uri: `spotify:playlist:${playlistId}` });
 };
 
 const start = () => {
+  app.get("/now-playing", async (req, res) => {
+    const nowPlaying = await Spotify["get-current-track-and-artist"]();
+    res.send(nowPlaying);
+  });
+
   app.get("/start-discover", async (req, res) => {
     await startPlaylistOnStereo("Discover Weekly");
     res.sendStatus(200);
@@ -23,7 +32,7 @@ const start = () => {
   });
 
   app.get("/start-monthly", async (req, res) => {
-    const monthlyPlaylist = await Spotify["get-monthly-playlist"]();
+    const monthlyPlaylist = await Spotify["get-monthly-playlist-name"]();
     await startPlaylistOnStereo(monthlyPlaylist);
     res.sendStatus(200);
   });
@@ -32,7 +41,7 @@ const start = () => {
     try {
       await Spotify["add-to-monthly-playlist"]();
       res.send("Saved song to your monthly playlist");
-    } catch {
+    } catch (e) {
       res.send("Something went wrong saving that song");
     }
   });
