@@ -8,14 +8,21 @@ const startPlaylistOnStereo = async (playlistName, shuffle = true) => {
   const playlistId = await Spotify["get-playlist"](playlistName);
   if (!isActive) {
     await Spotify["pause"]();
-    await new Promise(res => setTimeout(res, 1000));
+    await new Promise(res => setTimeout(res, 5000));
     await Spotify["set-volume"](40);
   }
+  console.log('setting shuffle to', shuffle);
   await Spotify["set-shuffle"](shuffle);
   await Spotify["play"]({ context_uri: `spotify:playlist:${playlistId}` });
 };
 
 const start = () => {
+  app.get("/set-shuffle", async (req, res) => {
+    console.log('setting shuffle to', true);
+    const result = await Spotify["set-shuffle"](true);
+    console.log(`result`, result);
+    res.sendStatus(200)
+  });
   app.get("/now-playing", async (req, res) => {
     const nowPlaying = await Spotify["get-current-track-and-artist"]();
     res.send(nowPlaying);
