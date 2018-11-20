@@ -13,6 +13,7 @@ const startPlaylistOnStereo = async (playlistName, shuffle = true) => {
   }
   console.log('setting shuffle to', shuffle);
   await Spotify["set-shuffle"](shuffle);
+  await Spotify["set-repeat"]('context');
   await Spotify["play"]({ context_uri: `spotify:playlist:${playlistId}` });
 };
 
